@@ -5,8 +5,8 @@ namespace Rooms
 {
     public class CameraMovement : MonoBehaviour
     {
-        public Direction CurrentDir { get; private set; }
-        public Room CurrentRoom { get; private set; }
+        [field: SerializeField] public Room CurrentRoom { get; private set; }
+        [field: SerializeField] public Direction CurrentDir { get; private set; }
 
         private void Update()
         {
