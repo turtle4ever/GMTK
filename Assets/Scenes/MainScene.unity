@@ -696,8 +696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb32f6f502f8ad40b1750cd941be93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 1
-  currentroom: {fileID: 783896020}
+  <CurrentRoom>k__BackingField: {fileID: 783896020}
+  <CurrentDir>k__BackingField: 0
 --- !u!1 &581993338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,10 +2696,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e9f4c104790184583f057fdf1fdf9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  North_tilemap: {fileID: 146056429}
-  West_tilemap: {fileID: 581993338}
-  South_tilemap: {fileID: 682802295}
-  East_tilemap: {fileID: 1318290960}
+  _northMap: {fileID: 146056429}
+  _eastMap: {fileID: 1318290960}
+  _southMap: {fileID: 682802295}
+  _westMap: {fileID: 581993338}
 --- !u!1 &1318290960
 GameObject:
   m_ObjectHideFlags: 0
