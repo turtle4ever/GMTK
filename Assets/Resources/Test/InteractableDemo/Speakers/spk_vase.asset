@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1d433e6dc0318b4f954bc3c69043a3e, type: 3}
-  m_Name: 23
+  m_Script: {fileID: 11500000, guid: bfd87929d525465c9379a2439b169917, type: 3}
+  m_Name: spk_vase
   m_EditorClassIdentifier: 
-  Content: hello
-  Options: []
-  Next: []
+  Name: Narator
+  Profile: {fileID: 2800000, guid: 1982108127020554da05d81e172f2927, type: 3}

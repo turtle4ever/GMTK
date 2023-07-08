@@ -1,22 +1,28 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Dialogue
 {
     public class OptionBtn : MonoBehaviour
     {
-        public Action<int> ChooseOption;
-        public int OptionNumber;
+        [SerializeField] private int _optionNumber;
+        public Action<int> OnOptionSelected;
         
+        private TMP_Text _text;
+
+        private void Awake()
+        {
+            _text = GetComponentInChildren<TMP_Text>();
+        }
+
         public void OnClick() {
-            Debug.Log(OptionNumber);
-            ChooseOption?.Invoke(OptionNumber);
+            OnOptionSelected?.Invoke(_optionNumber);
         }
 
         public void ChangeContent(string content) {
-            TMP_Text text = GetComponentInChildren<TMP_Text>();
-            text.text = content;
+            _text.text = content;
         }
     }
 }
