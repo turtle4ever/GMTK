@@ -10,7 +10,8 @@ namespace Dialogue
         public int OptionNumber;
         
         public void OnClick() {
-            ChooseOption(OptionNumber);
+            Debug.Log(OptionNumber);
+            ChooseOption?.Invoke(OptionNumber);
         }
 
         public void ChangeContent(string content) {

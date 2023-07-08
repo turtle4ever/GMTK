@@ -8,13 +8,13 @@ namespace Dialogue
         [SerializeField] private DialogueSO DialogueTreeRoot;
         [SerializeField] private DialogueDisplay UI;
 
-        private void Start(){
+        [SerializeField] private Transform Options;
+
+        private void Start() {
             Display();
         
-            OptionBtn[] btn = FindObjectsOfType<OptionBtn>();
-
-            foreach (var option in btn)
-                option.ChooseOption += Select;
+            for (int i = 0; i < Options.childCount; i++)
+                Options.GetChild(i).GetComponent<OptionBtn>().ChooseOption += Select;
         }
         private void Display() {
             UI.ShowDialogueLine(DialogueTreeRoot);
@@ -24,8 +24,13 @@ namespace Dialogue
         private void Select(int option) {
             DialogueSO child = GetChild(DialogueTreeRoot, option);
             DialogueTreeRoot = child;
+            
+            DialogueTreeRoot.Callback.Invoke();
 
-            Display();
+            if (DialogueTreeRoot.Next.Count == 0)
+                UI.StopDisplay();
+            else
+                Display();
         }
 
         private DialogueSO GetChild(DialogueSO parent, int option){

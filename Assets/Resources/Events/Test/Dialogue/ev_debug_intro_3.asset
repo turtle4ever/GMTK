@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d433e6dc0318b4f954bc3c69043a3e, type: 3}
+  m_Name: ev_debug_intro_3
+  m_EditorClassIdentifier: 
+  Speaker: {fileID: 11400000, guid: 26a1198d6a50a55409c3a5a66a240ebc, type: 2}
+  Callback:
+    m_PersistentCalls:
+      m_Calls: []
+  Content: 'We will go kill this random cultist guy called Allamir.
+
+
+    He is big
+    bad and evil.'
+  Options:
+  - Omg Allamir?!
+  - Do not.
+  Next:
+  - {fileID: 11400000, guid: 8ccd142a4778e594b8aefc31b0a32d2c, type: 2}
+  - {fileID: 11400000, guid: 0d603adf460160445b2a80a9fc3c674d, type: 2}
