@@ -6,15 +6,14 @@ using UnityEngine;
 public class DialogueDisplay : MonoBehaviour
 {
 	[SerializeField]private TMP_Text DialogueText;
-    [SerializeField]private TMP_Text DialogOptionsText;
+    [SerializeField]private List<OptionBtn> Buttons;
 
     public void ShowDialogueLine(DialogueSO Dialogue){
         DialogueText.text = Dialogue.Content;
     }
     public void ShowDialogueOptions(DialogueSO Dialogue){
-        DialogOptionsText.text = "";
-        for(int i=0; i<Dialogue.Options.Count; i++){
-            DialogOptionsText.text += Dialogue.Options[i]+"\n";
+        for(int i=0; i<Buttons.Count; i++){
+            Buttons[i].ChangeContent(Dialogue.Options[i]);
         }
     }
 

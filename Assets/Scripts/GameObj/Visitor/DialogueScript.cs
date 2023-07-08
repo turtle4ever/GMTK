@@ -7,8 +7,6 @@ public class DialogueScript : MonoBehaviour
     [SerializeField] private DialogueSO DialogueTreeRoot;
     [SerializeField] private DialogueDisplay UI;
 
-    //TODO: move this into their correct scripts
-
     void Start(){
         Display();
         OptionBtn[] btn = FindObjectsOfType<OptionBtn>();
@@ -16,7 +14,6 @@ public class DialogueScript : MonoBehaviour
             btn[i].ChooseOption +=Select;
         }
     }
-    //
     public void Display(){
         UI.ShowDialogueLine(DialogueTreeRoot);
         UI.ShowDialogueOptions(DialogueTreeRoot);
