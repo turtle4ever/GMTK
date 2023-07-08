@@ -10,14 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1d433e6dc0318b4f954bc3c69043a3e, type: 3}
-  m_Name: 2
+  m_Name: 21
   m_EditorClassIdentifier: 
-  Content: option2
+  Content: 
   Options:
-  - option 1
-  - option 2
-  - option 3
-  Next:
-  - {fileID: 11400000, guid: ae89b5ae8709fca4dbc864c920ac2d90, type: 2}
-  - {fileID: 11400000, guid: 5615184546cb8a844a9d65c699514d07, type: 2}
-  - {fileID: 11400000, guid: 25939d050fd6ec84b94982d90a226fc8, type: 2}
+  - hello
+  Next: []

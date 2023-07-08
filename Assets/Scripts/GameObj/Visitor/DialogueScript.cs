@@ -34,8 +34,6 @@ public class DialogueScript : MonoBehaviour
     }
 
     DialogueSO GetChild(DialogueSO Parent, int option){
-        Debug.Log(Parent.Next.Count);
-        Debug.Log(option);
         if(Parent == null){
             Debug.Log("Parent is null! (This should`t happen!)");
         }

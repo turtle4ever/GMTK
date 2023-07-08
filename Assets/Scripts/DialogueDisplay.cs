@@ -13,7 +13,13 @@ public class DialogueDisplay : MonoBehaviour
     }
     public void ShowDialogueOptions(DialogueSO Dialogue){
         for(int i=0; i<Buttons.Count; i++){
-            Buttons[i].ChangeContent(Dialogue.Options[i]);
+            if(Dialogue.Options.Count<=i){
+                Buttons[i].gameObject.SetActive(false);
+            }
+            else{
+                Buttons[i].gameObject.SetActive(true);
+                Buttons[i].ChangeContent(Dialogue.Options[i]);
+            }
         }
     }
 
