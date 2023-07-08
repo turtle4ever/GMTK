@@ -1,4 +1,5 @@
 using System;
+using Events;
 using UnityEngine;
 
 namespace Dialogue
@@ -14,6 +15,28 @@ namespace Dialogue
         public void DisagreeKillAllamir()
         {
             Debug.Log("Bad, how dare player disagree with kill allamir?!!?!?!?");
+        }
+
+        // TODO(calco): What the frick is this?
+        private EventSO _a, _b;
+        public void SetEventA(EventSO eventSO)
+        {
+            _a = eventSO;
+        }
+        
+        public void SetEventB(EventSO eventSO)
+        {
+            _b = eventSO;
+        }
+        
+        public void QueueEvent()
+        {
+            EventManager.Instance.QueueEvent(_a, _b);
+        }
+        
+        public void DequeueEvent()
+        {
+            EventManager.Instance.DequeueEvent(_a, _b);
         }
     }
 }

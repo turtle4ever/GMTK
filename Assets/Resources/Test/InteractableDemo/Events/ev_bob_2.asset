@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2de904ebec4c98b185361e08f2a481, type: 3}
+  m_Name: ev_bob_2
+  m_EditorClassIdentifier: 
+  Dialogue: {fileID: 11400000, guid: 94b261c5622525f42bbe89677fe8334a, type: 2}
+  Unique: 1
+  FollowUpDelay: 10
+  FollowUpVariance: 5
+  FollowUps:
+  - {fileID: 11400000, guid: cc7c39ec97965ca4c9904e04aa95a1a9, type: 2}
+  FollowUpChances:
+  - 1
+  Unlocks: []
+  Locks: []

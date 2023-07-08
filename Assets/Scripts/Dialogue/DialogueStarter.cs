@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Dialogue
@@ -6,7 +7,7 @@ namespace Dialogue
     {
         [SerializeField] private DialogueSO _rootDialogue;
         [SerializeField] private DialogueDisplay _dialogueDisplay;
-
+        
         private void Start()
         {
             StopDialogue();

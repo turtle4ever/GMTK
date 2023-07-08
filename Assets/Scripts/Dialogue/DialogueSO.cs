@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using Events;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Dialogue
 {
@@ -10,6 +13,8 @@ namespace Dialogue
         public SpeakerSO Speaker;
 
         public UnityEvent Callback;
+        
+        // Button
 
         [TextArea(10, 20)]
         public string Content;

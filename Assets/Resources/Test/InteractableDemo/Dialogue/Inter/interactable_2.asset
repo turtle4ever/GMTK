@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1d433e6dc0318b4f954bc3c69043a3e, type: 3}
-  m_Name: interactable_1
+  m_Name: interactable_2
   m_EditorClassIdentifier: 
-  Speaker: {fileID: 0}
+  Speaker: {fileID: 11400000, guid: 66a2475c63d5df1479136a3e7c714b66, type: 2}
   Callback:
     m_PersistentCalls:
       m_Calls: []
-  Content: Looks like a funky vase.
+  Content: I am funky.
   Options:
-  - Continue
-  Next:
-  - {fileID: 11400000, guid: 800ad47d83b8e4347b87082e5a9c7ded, type: 2}
+  - End
+  Next: []

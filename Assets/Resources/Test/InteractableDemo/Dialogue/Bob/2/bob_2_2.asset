@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d433e6dc0318b4f954bc3c69043a3e, type: 3}
+  m_Name: bob_2_2
+  m_EditorClassIdentifier: 
+  Speaker: {fileID: 11400000, guid: 4262182902e7d8f4ebf66cbfaf303efa, type: 2}
+  Callback:
+    m_PersistentCalls:
+      m_Calls: []
+  Content: How are you, dear human?
+  Options:
+  - Good
+  - Bad
+  - Fireball
+  Next:
+  - {fileID: 11400000, guid: 49bd253f83733d949ad4a2b9f5e94dd3, type: 2}
+  - {fileID: 11400000, guid: 5157cc1f55b7e2641b1f0095e347def2, type: 2}
+  - {fileID: 11400000, guid: 810551bab7fb3a2448865045b32d8396, type: 2}
