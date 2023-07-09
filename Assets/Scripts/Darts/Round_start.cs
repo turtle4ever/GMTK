@@ -16,6 +16,8 @@ public class Round_start : MonoBehaviour
     public GameObject Restart;
     public GameObject GameOver;
     public CircleCollider2D Round2D;
+    public CircleCollider2D Bullseye2D;
+    public PolygonCollider2D Rounder2D;
     public BoxCollider2D XLine2D;
     public BoxCollider2D YLine2D;
     public float XLineSpeed;
@@ -37,6 +39,7 @@ public class Round_start : MonoBehaviour
         while ( GameLost == false)
         {
             Round.GetComponent<Random_spawn>().CreateTarget();
+
             yield return new WaitUntil(() =>
             {
                 XLine.transform.position += Vector3.right * XLineSpeed * RoundRaiser ;
@@ -44,7 +47,9 @@ public class Round_start : MonoBehaviour
                 bool PressedSpace = Input.GetKeyDown(KeyCode.Space);
                 return RightEdgeCheck || PressedSpace;
             });
+
             yield return new WaitForEndOfFrame();
+
             yield return new WaitUntil(() =>
             {
                 YLine.transform.position += Vector3.down * YLineSpeed * RoundRaiser;
@@ -52,15 +57,30 @@ public class Round_start : MonoBehaviour
                 bool PressedSpace1 = Input.GetKeyDown(KeyCode.Space);
                 return DownEdgeCheck || PressedSpace1 ;
             });
-            if (Round2D.bounds.Intersects(XLine2D.bounds) == false || Round2D.bounds.Intersects(YLine2D.bounds) == false )
+
+            if ((Round2D.bounds.Intersects(XLine2D.bounds) == true && Round2D.bounds.Intersects(YLine2D.bounds) == true) || (Rounder2D.bounds.Intersects(XLine2D.bounds) == true && Rounder2D.bounds.Intersects(YLine2D.bounds) == true))
+                GameLost = false; 
+            else
                 GameLost = true;
+            if (Bullseye2D.bounds.Intersects(XLine2D.bounds) == true && Bullseye2D.bounds.Intersects(YLine2D.bounds) == true)
+            {
+                Score++;
+                GameLost = false;
+                Debug.Log("PLS WORK");
+            }
+                
+            //play bullseye sound;
             yield return new WaitForSeconds(0.5f);
+
             YLine.transform.position = new Vector2(0f, 5.63f);
             XLine.transform.position = new Vector2(-11.35f, 0f);
+
             if ( GameLost == false )
                 Score++;
+
             if (Score > Highscore)
                 Highscore = Score;
+
             ScoreText.SetText(Score.ToString());
             HighscoreText.SetText(Highscore.ToString());
             RoundRaiser += 0.05f;
