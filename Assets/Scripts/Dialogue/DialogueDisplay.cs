@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ namespace Dialogue
 {
     public class DialogueDisplay : MonoBehaviour
     {
+        public UnityEvent<DialogueSO> OnDialogueFinished;
+        private DialogueSO _cachedOriginalRoot;
+
         [Header("Dialogue Box References")]
         [SerializeField] private GameObject Box;
         [SerializeField] private GameObject Options;
@@ -33,6 +37,9 @@ namespace Dialogue
             Box.SetActive(true);
             Options.SetActive(true);
             
+            if (_cachedOriginalRoot == null)
+                _cachedOriginalRoot = dialogue;
+
             foreach (var button in _buttons) {
                 button.OnOptionSelected += option =>
                 {
@@ -47,6 +54,9 @@ namespace Dialogue
         {
             Box.SetActive(false);
             Options.SetActive(false);
+            
+            OnDialogueFinished?.Invoke(_cachedOriginalRoot);
+            _cachedOriginalRoot = null;
             
             foreach (var button in _buttons)
                 button.OnOptionSelected = null;
@@ -63,11 +73,7 @@ namespace Dialogue
             
             DialogueSO child = root.Next[option];
             child.Callback.Invoke();
-            
-            // if (root.Next.Count > 0)
-            // else
-            //     StopDisplay();
-            
+
             root = child;
             UpdateDisplay(root);
         }

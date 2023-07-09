@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1d433e6dc0318b4f954bc3c69043a3e, type: 3}
-  m_Name: interactable_2
+  m_Name: bob_2_2_good_2
   m_EditorClassIdentifier: 
-  Speaker: {fileID: 0}
+  Speaker: {fileID: 11400000, guid: 4262182902e7d8f4ebf66cbfaf303efa, type: 2}
   Callback:
     m_PersistentCalls:
       m_Calls: []
-  Content: I am funky.
+  Content: Well then, I'll be back!
   Options:
   - Continue
   Next:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: f284c98bec6d0e5458b1b82608bdac95, type: 2}
