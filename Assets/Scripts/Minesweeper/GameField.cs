@@ -5,7 +5,7 @@ using System;
 
 public class GameField : MonoBehaviour
 {
-    [SerializeField] private GameObject UI;
+    [SerializeField] private UIManager UI; 
     [SerializeField] private Sprite Default;
     [SerializeField] private Sprite[] Numbered; 
     [SerializeField] private Sprite Mine;
@@ -16,7 +16,8 @@ public class GameField : MonoBehaviour
     private GameObject[,] Map;
     private bool[,] Visited;
     private int Mines;
-
+    private int FlagsLeft;
+    private bool IsOver;
     // FloodFill
     int[] DirLin = new int[8] {-1, -1, 0, 1, 1, 1, 0, -1};
     int[] DirCol = new int[8] {0, 1, 1, 1, 0, -1, -1, -1};
@@ -44,8 +45,6 @@ public class GameField : MonoBehaviour
         int MinesAround = GetMinesAround(Pos);
         Map[Pos.Item2, Pos.Item1].GetComponent<SpriteRenderer>().sprite = Numbered[MinesAround];
 
-        Debug.Log(Pos);
-
         Visited[Pos.Item2, Pos.Item1] = true;
         if(MinesAround > 0) return;
         for(int i=0; i<8; i++){
@@ -72,7 +71,7 @@ public class GameField : MonoBehaviour
                     Map[i, j].GetComponent<SpriteRenderer>().sprite = Mine;
     }
 
-    void Awake(){
+    void Start(){
         Map = new GameObject[FieldSizeY,FieldSizeX];
         Visited = new bool[FieldSizeY, FieldSizeX];
         for(int i=0; i<FieldSizeY; i++)
@@ -95,29 +94,42 @@ public class GameField : MonoBehaviour
                 script.ClickBlock += BlockClicked;
                 script.SetFlag += SetFlag;
             }
+        FlagsLeft = Mines;
+        UI.DisplayFlagsLeft(FlagsLeft);
     }
 
     private void BlockClicked((int, int)Pos){
+        if(IsOver) return;
         if(Map[Pos.Item2, Pos.Item1].GetComponent<Block>().IsMine == true){
             ShowMines();
             Map[Pos.Item2, Pos.Item1].GetComponent<SpriteRenderer>().sprite = Exploded;
-            UI.SetActive(true);
+            UI.ToggleUI();
+            IsOver = true;
         }
         else{
             FloodFill(Pos);
             if(IsClear()){
                 ShowMines();
-                UI.SetActive(true);
+                UI.ToggleUIOn();
+                IsOver = true;
             }
         }
     }
 
     private void SetFlag((int, int)Pos){
-        if( Map[Pos.Item2, Pos.Item1].GetComponent<Block>().IsFlag)
+        if(IsOver) return;
+        if( Map[Pos.Item2, Pos.Item1].GetComponent<Block>().IsFlag){
             Map[Pos.Item2, Pos.Item1].GetComponent<SpriteRenderer>().sprite = Default;
-        else
+            Map[Pos.Item2, Pos.Item1].GetComponent<Block>().IsFlag = false;
+            FlagsLeft++;
+        }
+        else if(FlagsLeft>0 && Map[Pos.Item2, Pos.Item1].GetComponent<SpriteRenderer>().sprite == Default){
             Map[Pos.Item2, Pos.Item1].GetComponent<SpriteRenderer>().sprite = Flagged;
-        Map[Pos.Item2, Pos.Item1].GetComponent<Block>().IsFlag = !Map[Pos.Item2, Pos.Item1].GetComponent<Block>().IsFlag;
+            Map[Pos.Item2, Pos.Item1].GetComponent<Block>().IsFlag = true;
+            FlagsLeft--;
+        }
+        UI.DisplayFlagsLeft(FlagsLeft);
+        
     }
 
 }
